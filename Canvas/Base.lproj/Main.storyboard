@@ -18,22 +18,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yw-5z-Dck">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7yw-5z-Dck" customClass="CanvasView" customModule="Canvas" customModuleProvider="target">
                                 <rect key="frame" x="16" y="43" width="343" height="251"/>
                                 <color key="backgroundColor" red="0.96638069803638227" green="1" blue="0.92427215951740616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="251" id="7B7-ZT-ggY"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHT-sO-ekU">
+                                <rect key="frame" x="16" y="617" width="30" height="30"/>
+                                <state key="normal" title="pen"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S48-l7-nIr">
+                                <rect key="frame" x="63" y="617" width="35" height="30"/>
+                                <state key="normal" title="reset"/>
+                                <connections>
+                                    <action selector="resetAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7ug-yP-210"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7yw-5z-Dck" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="23" id="GQr-Uv-Ngm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7yw-5z-Dck" secondAttribute="trailing" constant="16" id="LSc-Sz-vAo"/>
+                            <constraint firstItem="S48-l7-nIr" firstAttribute="centerY" secondItem="CHT-sO-ekU" secondAttribute="centerY" id="Q2U-Er-ull"/>
                             <constraint firstItem="7yw-5z-Dck" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="VxD-wf-TzZ"/>
+                            <constraint firstItem="S48-l7-nIr" firstAttribute="leading" secondItem="CHT-sO-ekU" secondAttribute="trailing" constant="17" id="X8S-fw-9fA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CHT-sO-ekU" secondAttribute="bottom" constant="20" id="deg-cR-GJR"/>
+                            <constraint firstItem="CHT-sO-ekU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qS5-rS-gQX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="canvas" destination="7yw-5z-Dck" id="eue-wY-cbo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,13 +9,114 @@
 import UIKit
 
 class CanvasView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    //layers
+    
+    
+    //curent selected tool
+    var tool:tools = .pen
+    
+    var groups:[Group] = []
+    
+    func resetAll(){
+        groups = []
+        
     }
-    */
+
+    func addNewLayer(){
+        let layer:UIImageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: frame.size))
+        // get next layer index and put in tag
+        // tag == index
+        var group:Group = Group()
+        
+        group.layers.append(layer)
+        groups.append(group)
+        self.addSubview(layer)
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {return}
+        let currentPoint = touch.location(in: self)
+        
+        switch tool {
+        case .pen:
+            //top gropup in view
+            var top_group:Group = groups.last!
+            top_group.startPoint = currentPoint
+            top_group.strokeSets.append([])
+            groups[groups.count - 1] = top_group
+            break
+            
+        case .hand:
+            break
+            
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let currentPoint = touch.location(in: self)
+        switch tool {
+
+        case .pen:
+            var top_group:Group = groups.last!
+            let stroke = Stroke(startPoint: top_group.startPoint, endPoint: currentPoint, color: UIColor.blue.cgColor, strokeWidth: 5.0)
+            top_group.strokeSets[top_group.strokeSets.count - 1].append(stroke)
+            top_group.startPoint = currentPoint
+            groups[groups.count - 1] = top_group
+            break
+            
+        case .hand:
+            break
+            
+        }
+        DrawStroke()
+
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let currentPoint = touch.location(in: self)
+
+        switch tool {
+            
+        case .pen:
+             var top_group:Group = groups.last!
+            let stroke = Stroke(startPoint: top_group.startPoint, endPoint: currentPoint, color: UIColor.blue.cgColor, strokeWidth: 5.0)
+            top_group.strokeSets.append([stroke])
+            top_group.startPoint = nil
+            break
+        case .hand:
+            
+            break
+        }
+        
+      
+    }
+    //drowing funtions
+    func DrawStroke(){
+
+        let renderer = UIGraphicsImageRenderer(size: self.frame.size)
+        let rendererImage = renderer.image { context in
+
+            context.cgContext.setFillColor(UIColor.red.cgColor)
+            context.cgContext.setStrokeColor(UIColor.black.cgColor)
+            context.cgContext.setLineWidth(10)
+            context.cgContext.beginPath()
+            for group in groups {
+                for strokeSet in group.strokeSets {
+                    for stroke in strokeSet{
+                        context.cgContext.move(to: stroke.startPoint)
+                        context.cgContext.addLine(to: stroke.endPoint)
+                    }
+                }
+            }
+            
+            context.cgContext.strokePath()
+        }
+        groups.last?.layers.last?.image = rendererImage
+    }
+    
+    
 
 }

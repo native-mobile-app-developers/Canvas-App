@@ -7,3 +7,6 @@
 //
 
 import Foundation
+enum tools{
+   case pen,hand
+}

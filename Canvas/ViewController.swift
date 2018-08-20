@@ -10,9 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var canvas: CanvasView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        canvas.addNewLayer()
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +27,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func resetAction(_ sender: UIButton) {
+        canvas.resetAll()
+    }
+    
 }
 

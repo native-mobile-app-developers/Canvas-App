@@ -14,6 +14,10 @@
 		FE1161FD212A8A8800F9C8D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE1161FB212A8A8800F9C8D2 /* LaunchScreen.storyboard */; };
 		FE116208212A8A8800F9C8D2 /* CanvasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE116207212A8A8800F9C8D2 /* CanvasTests.swift */; };
 		FE116213212A8A8800F9C8D2 /* CanvasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE116212212A8A8800F9C8D2 /* CanvasUITests.swift */; };
+		FE116222212A8C7E00F9C8D2 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE116221212A8C7E00F9C8D2 /* CanvasView.swift */; };
+		FE116225212A99AA00F9C8D2 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE116224212A99AA00F9C8D2 /* Stroke.swift */; };
+		FE116228212ABD9300F9C8D2 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE116227212ABD9300F9C8D2 /* Group.swift */; };
+		FE11622A212ABF8800F9C8D2 /* enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE116229212ABF8800F9C8D2 /* enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		FE11620E212A8A8800F9C8D2 /* CanvasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CanvasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE116212212A8A8800F9C8D2 /* CanvasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasUITests.swift; sourceTree = "<group>"; };
 		FE116214212A8A8800F9C8D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE116221212A8C7E00F9C8D2 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		FE116224212A99AA00F9C8D2 /* Stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
+		FE116227212ABD9300F9C8D2 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		FE116229212ABF8800F9C8D2 /* enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,7 @@
 		FE1161F1212A8A8500F9C8D2 /* Canvas */ = {
 			isa = PBXGroup;
 			children = (
+				FE116220212A8C5C00F9C8D2 /* CanvasHandler */,
 				FE1161F2212A8A8500F9C8D2 /* AppDelegate.swift */,
 				FE1161F4212A8A8500F9C8D2 /* ViewController.swift */,
 				FE1161F6212A8A8500F9C8D2 /* Main.storyboard */,
@@ -123,6 +132,33 @@
 				FE116214212A8A8800F9C8D2 /* Info.plist */,
 			);
 			path = CanvasUITests;
+			sourceTree = "<group>";
+		};
+		FE116220212A8C5C00F9C8D2 /* CanvasHandler */ = {
+			isa = PBXGroup;
+			children = (
+				FE116226212ABD5D00F9C8D2 /* Objects */,
+				FE116223212A96EB00F9C8D2 /* Drawables */,
+				FE116221212A8C7E00F9C8D2 /* CanvasView.swift */,
+			);
+			path = CanvasHandler;
+			sourceTree = "<group>";
+		};
+		FE116223212A96EB00F9C8D2 /* Drawables */ = {
+			isa = PBXGroup;
+			children = (
+				FE116224212A99AA00F9C8D2 /* Stroke.swift */,
+			);
+			path = Drawables;
+			sourceTree = "<group>";
+		};
+		FE116226212ABD5D00F9C8D2 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				FE116227212ABD9300F9C8D2 /* Group.swift */,
+				FE116229212ABF8800F9C8D2 /* enums.swift */,
+			);
+			path = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +292,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE116228212ABD9300F9C8D2 /* Group.swift in Sources */,
 				FE1161F5212A8A8500F9C8D2 /* ViewController.swift in Sources */,
 				FE1161F3212A8A8500F9C8D2 /* AppDelegate.swift in Sources */,
+				FE116222212A8C7E00F9C8D2 /* CanvasView.swift in Sources */,
+				FE11622A212ABF8800F9C8D2 /* enums.swift in Sources */,
+				FE116225212A99AA00F9C8D2 /* Stroke.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +473,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F2CT8PC58D;
 				INFOPLIST_FILE = Canvas/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -451,6 +492,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F2CT8PC58D;
 				INFOPLIST_FILE = Canvas/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

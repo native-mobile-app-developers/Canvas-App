@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
-struct Layer {
-    var lastPoint: CGPoint!
-    var strokes :[[Stroke]] = []
+struct Group {
+    var startPoint: CGPoint!
+    
+    var layers:[UIImageView] = []
+    var strokeSets :[[Stroke]] = []
     
 }
