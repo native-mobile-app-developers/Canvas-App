@@ -29,6 +29,7 @@ class ViewController: UIViewController {
 
     @IBAction func resetAction(_ sender: UIButton) {
         canvas.resetAll()
+        canvas.addNewLayer()
     }
     
 }

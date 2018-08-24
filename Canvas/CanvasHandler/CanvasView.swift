@@ -19,7 +19,9 @@ class CanvasView: UIView {
     
     func resetAll(){
         groups = []
-        
+        for view in self.subviews {
+            view.removeFromSuperview()
+        }
     }
 
     func addNewLayer(){
@@ -111,8 +113,15 @@ class CanvasView: UIView {
                     }
                 }
             }
-            
+            context.cgContext.setLineCap(.round)
             context.cgContext.strokePath()
+//            let paragraphStyle = NSMutableParagraphStyle()
+//            paragraphStyle.alignment = .center
+//
+//            let attrs = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Thin", size: 36)!, NSAttributedStringKey.paragraphStyle: paragraphStyle]
+//
+//            let string = "How much wood would a woodchuck\nchuck if a woodchuck would chuck wood?"
+//            string.draw(with: CGRect(x: 32, y: 32, width: 448, height: 448), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
         }
         groups.last?.layers.last?.image = rendererImage
     }
